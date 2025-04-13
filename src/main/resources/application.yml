@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+
+msa:
+  gateway-url: ${MSA_GATEWAY_URL}
+
+

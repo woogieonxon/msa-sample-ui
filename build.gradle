@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.k-paas'
+version = '1.0'
+
+java {
+	sourceCompatibility = '1.8'
+}
+
+ext {
+	set('springCloudVersion', "2021.0.8")
+}
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+	enabled = false
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compileOnly("org.springframework.boot:spring-boot-devtools")
+	implementation 'org.projectlombok:lombok'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
